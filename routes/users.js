@@ -1,9 +1,24 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+module.exports = ({ getUsers }) => {
+  /* GET users listing. */
+  router.get("/", function (req, res) {
+    getUsers()
+      .then((users) => {
+        res.json(users);
+      })
+      .catch((err) => {
+        res.json({
+          error: err.message,
+        });
+      });
+  });
 
-module.exports = router;
+  /* POST new user */
+  router.post("/", function (req, res) {
+    res.send("Post Users");
+  });
+
+  return router;
+};
