@@ -9,7 +9,7 @@ module.exports = (db) => {
 
   const getTweetsByUser = (userID) => {
     const query = {
-      text: "SELECT * FROM tweets WHERE user_id = $1",
+      text: "SELECT * FROM tweets WHERE id = $1",
       values: [userID],
     };
 

@@ -1,13 +1,8 @@
-module.exports = (db) => {
-  const getUsers = () => {
-    const query = {
-      text: "SELECT id, username, created_at FROM users",
-    };
+const bcrypt = require("bcrypt");
 
-    return db.query(query).then((result) => result.rows);
-  };
-
-  return {
-    getUsers,
-  };
+//HELPER: Check for errors/duplicates in registration
+const validateNewUser = () => {
+  if (1) {
+    return;
+  }
 };

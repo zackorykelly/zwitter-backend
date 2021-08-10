@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 module.exports = ({ getUsers }) => {
   /* GET users listing. */
@@ -16,8 +16,35 @@ module.exports = ({ getUsers }) => {
   });
 
   /* POST new user */
-  router.post("/", function (req, res) {
-    res.send("Post Users");
+  router.post("/register", function (req, res) {
+    getUsers()
+      .then((users) => {
+        if (users.find((user) => user.username === newUsername)) {
+          return 0;
+        }
+      })
+      .catch((err) => {
+        res.json({
+          error: err.message,
+        });
+      });
+  });
+
+  /* POST user login */
+  router.post("/login", function (req, res) {
+    const loginUsername = "";
+    const loginPassword = "";
+    getUserByUsername(loginUsername)
+      .then((user) => {
+        if (user[0].password === loginPassword) {
+          return 0;
+        }
+      })
+      .catch((err) => {
+        res.json({
+          error: err.message,
+        });
+      });
   });
 
   return router;
