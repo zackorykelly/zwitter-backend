@@ -4,7 +4,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const db = require("./db");
-const dbHelpers = require("./helpers/dbHelpers")(db);
 const usersQueries = require("./db/users-queries")(db);
 const tweetsQueries = require("./db/tweets-queries")(db);
 
